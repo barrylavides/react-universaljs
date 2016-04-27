@@ -1,16 +1,13 @@
 var path = require('path');
 
 module.exports = {
-  entry: path.join(process.cwd(), 'entry.js'),
+  entry: './client/entry.js',
   module: {
     loaders: [
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015']
-        }
+        exclude: /node_modules/
       }
     ]
   },
@@ -18,7 +15,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: './public/',
+    path: './server/public/',
     filename: 'build.js'
   }
 }

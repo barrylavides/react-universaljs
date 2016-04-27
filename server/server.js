@@ -4,12 +4,13 @@ import React from 'react';
 import {renderToString} from 'react-dom/server';
 import {match,RouterContext} from 'react-router';
 
-import {routes} from './routes';
+import {routes} from '../client/routes';
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static(__dirname +'/public'));
 app.set('view engine', 'ejs');
+app.set('views', __dirname +'/views');
 
 app.get('*', (req, res) => {
   // routes is our object of React routes defined above
