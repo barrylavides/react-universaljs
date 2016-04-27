@@ -2,21 +2,11 @@ import express from 'express';
 import http from 'http';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import {match,RoutingContext} from 'react-router';
+import {match,RouterContext} from 'react-router';
 
+import {routes} from './routes';
 import AppComponent from './components/app';
 import IndexComponent from './components/index';
-
-const routes = {
-  path: '',
-  component: AppComponent,
-  childRoutes: [
-    {
-      path: '/',
-      component: IndexComponent
-    }
-  ]
-}
 
 const app = express();
 
@@ -35,7 +25,7 @@ app.get('*', (req, res) => {
     } else if (props) {
       // if we got props, that means we found a valid component to render
       // for the given route
-      const markup = renderToString(<RoutingContext {...props} />);
+      const markup = renderToString(<RouterContext {...props} />);
 
       // render 'index.ejs', but pass in the markup we want it to display
       res.render('index', {markup});
