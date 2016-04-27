@@ -5,8 +5,6 @@ import {renderToString} from 'react-dom/server';
 import {match,RouterContext} from 'react-router';
 
 import {routes} from './routes';
-import AppComponent from './components/app';
-import IndexComponent from './components/index';
 
 const app = express();
 
